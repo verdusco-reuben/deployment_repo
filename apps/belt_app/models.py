@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from datetime import datetime
 import re,bcrypt
 emailRegex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
@@ -50,7 +51,7 @@ class Trip(models.Model):
 	plan_maker = models.ForeignKey(User, related_name="justme")
 	destination = models.CharField(max_length=100)
 	desc = models.CharField(max_length=100)
-	start = models.DateTimeField(default='%m/%d/%y', editable=True)
-	end = models.DateTimeField(default='%m/%d/%y', editable=True)
+	start = models.DateTimeField(default=datetime.now(), editable=True)
+	end = models.DateTimeField(default=datetime.now(), editable=True)
 	others = models.ManyToManyField(User,related_name="others")
 	objects = TripManager()
