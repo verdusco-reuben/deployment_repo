@@ -5,14 +5,21 @@
 </head>
 <body>
 	<h1>Registration</h1>
-	<form action="submitform" method="post">
+	<form action="/register" method="post">
 	    {% csrf_token %}
-	    {{ form.as_p }}
+	    <p>Name: <input type="" name="name"></p>
+	    <p>Username: <input type="" name="username"></p>
+	    <p>Email: <input type="" name="email"></p>
+	    <p>Password: <input type="" name="password"></p>
+	    <p>Confirm PW: <input type="" name="password_confirm"></p>
 	    <input type="submit" value="Register" />
 	</form>
+	{% for error in request.session.errors %}
+          <p>{{error}}</p>
+    {% endfor %}
 
 	<h1>Login</h1>
-	<form action="login" method="post">
+	<form action="/login" method="post">
 	    {% csrf_token %}
 	    {{ login.as_p }}
 	    <input type="submit" value="Login" />
@@ -24,9 +31,6 @@
 		<li>Password: {{x.password}}</li>
 	</ol>
 	{% endfor %}
-	
-
-
 	<br>
 	<br>
 	<h1>Table of Users</h1>
@@ -37,7 +41,7 @@
 			<th>Email</th>
 			<th>Password</th>
 		</tr>
-		{% for x in all%}
+		{% for x in allusers%}
 		<tr>
 			<th>{{x.name}}</th>
 			<th>{{x.email}}</th>
@@ -45,6 +49,6 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<br>
+	
 </body>
 </html>

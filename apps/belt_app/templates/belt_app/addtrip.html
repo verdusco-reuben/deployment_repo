@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Book and Review</title>
+</head>
+<body>
+	<p><a href="/travels">Home</a> <a href="/logout">Logout</a></p>
+	<h3>Add a Trip</h3>
+	<form action="/newtrip" method="post">
+		{% csrf_token %}
+		<p>Destination: <input type="text" name="destination"></p>
+		<p>Description: <input type="text" name="desc"></p>
+		<p>Travel Date From: <input type="text" name="start"></p>
+		<p>Travel Date To: <input type="textarea" name="end"></p>
+		<input type="submit" value="Add">	
+	</form>
+	{% for error in request.session.errors %}
+          <p>{{error}}</p>
+          {% endfor %}
+</body>
+</html>

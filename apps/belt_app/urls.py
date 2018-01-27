@@ -3,9 +3,12 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'signin', views.index),
-    url(r'login', views.index),
-    url(r'logout', views.startpage),
-    url(r'^books$',views.home),
-    url(r'books/(?P<id>\d+)$', views.singlebook)
+    url(r'^register$', views.register),
+    url(r'^login$', views.login),
+    url(r'^logout/$', views.logout),
+    url(r'^travels$',views.home),
+    url(r'^books/add/$', views.addtrip),
+    url(r'^newtrip$', views.newtrip),
+    url(r'^users/(?P<id>\d+)$', views.userpage),
+    url(r'^join/(?P<id>\d+)$', views.join)
 ]

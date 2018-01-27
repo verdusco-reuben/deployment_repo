@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books Home</title>
+</head>
+<body>
+	<a href="?logout">Logout</a>
+
+	<h2>Hello, {{request.session.name}}!</h2>
+	<h3>Your Trip Schedules</h3>
+	<hr>
+	<table>
+		<tr>
+			<th>Destination</th>
+			<th>Travel Start Time</th>
+			<th>Travel End Date</th>
+			<th>Plan</th>
+		</tr>
+		<tr>
+			<th>{{trip.destination}}</th>
+			<th>{{trip.start}}</th>
+			<th>{{trip.end}}</th>
+			<th>{{trip.desc}}</th>
+		</tr>
+		{% for x in kindame %}
+		<tr>
+			<th>{{x.destination}}</th>
+			<th>{{x.start}}</th>
+			<th>{{x.end}}</th>
+			<th>{{x.desc}}</th>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+
+	<h3>Other User's Travel Plans</h3>
+	<hr>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Destination</th>
+			<th>Travel Start Time</th>
+			<th>Travel End Date</th>
+			<th>Do You Want to Join?</th>
+		</tr>
+		{% for x in notme %}
+		<tr>
+			<th>{{x.plan_maker.name}}</th>
+			<th><a href="/users/{{x.id}}">{{x.destination}}</a></th>
+			<th>{{x.start}}</th>
+			<th>{{x.end}}</th>
+			<th><a href="/join/{{x.id}}">Join</a></th>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="/books/add">Add Travel Plan</a>
+</body>
+</html>
