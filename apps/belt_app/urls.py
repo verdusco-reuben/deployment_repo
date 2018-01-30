@@ -4,11 +4,11 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^register$', views.register),
-    url(r'^login$', views.login),
+    url(r'^login$', views.register),
     url(r'^logout/$', views.logout),
     url(r'^travels$',views.home),
-    url(r'^books/add/$', views.addtrip),
+    url(r'^travels/add/$', views.addtrip),
     url(r'^newtrip$', views.newtrip),
-    url(r'^users/(?P<id>\d+)$', views.userpage),
+    url(r'^travels/destination/(?P<id>\d+)$', views.destination),
     url(r'^join/(?P<id>\d+)$', views.join)
 ]

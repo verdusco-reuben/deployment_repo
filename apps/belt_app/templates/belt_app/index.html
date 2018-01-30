@@ -7,48 +7,33 @@
 	<h1>Registration</h1>
 	<form action="/register" method="post">
 	    {% csrf_token %}
-	    <p>Name: <input type="" name="name"></p>
-	    <p>Username: <input type="" name="username"></p>
-	    <p>Email: <input type="" name="email"></p>
-	    <p>Password: <input type="" name="password"></p>
-	    <p>Confirm PW: <input type="" name="password_confirm"></p>
+	    <p>Name: <input type="text" name="name"></p>
+	    <p>Username: <input type="text" name="username"></p>
+	    <p>Password: <input type="text" name="password"></p>
+	    <p>Confirm PW: <input type="text" name="password_confirm"></p>
 	    <input type="submit" value="Register" />
 	</form>
-	{% for error in request.session.errors %}
-          <p>{{error}}</p>
+	{% for x in request.session.errors %}
+          <p>{{x}}</p>
     {% endfor %}
 
 	<h1>Login</h1>
 	<form action="/login" method="post">
 	    {% csrf_token %}
-	    {{ login.as_p }}
+	    <p>Username: <input type="text" name="username"></p>
+	    <p>Password: <input type="text" name="password"></p>
 	    <input type="submit" value="Login" />
 	</form>
-	{% for x in list%}
+	{% for x in allusers%}
 	<ol>
-		<li>Name: {{x.first_name}} {{x.last_name}}</li>
-		<li>Email: {{x.email}}</li>
+		<li>Name: {{x.name}}</li>
+		<li>Username: {{x.username}}</li>
 		<li>Password: {{x.password}}</li>
 	</ol>
 	{% endfor %}
 	<br>
 	<br>
-	<h1>Table of Users</h1>
-	<hr>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Password</th>
-		</tr>
-		{% for x in allusers%}
-		<tr>
-			<th>{{x.name}}</th>
-			<th>{{x.email}}</th>
-			<th>{{x.password}}</th>
-		</tr>
-		{% endfor %}
-	</table>
+
 	
 </body>
 </html>

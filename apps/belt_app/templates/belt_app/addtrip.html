@@ -10,8 +10,8 @@
 		{% csrf_token %}
 		<p>Destination: <input type="text" name="destination"></p>
 		<p>Description: <input type="text" name="desc"></p>
-		<p>Travel Date From: <input type="text" name="start"></p>
-		<p>Travel Date To: <input type="textarea" name="end"></p>
+		<p>Travel Date From: <input type="date" name="start"></p>
+		<p>Travel Date To: <input type="date" name="end"></p>
 		<input type="submit" value="Add">	
 	</form>
 	{% for error in request.session.errors %}

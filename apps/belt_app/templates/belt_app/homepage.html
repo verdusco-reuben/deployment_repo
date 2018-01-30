@@ -4,7 +4,7 @@
 	<title>Books Home</title>
 </head>
 <body>
-	<a href="?logout">Logout</a>
+	<a href="/logout">Logout</a>
 
 	<h2>Hello, {{request.session.name}}!</h2>
 	<h3>Your Trip Schedules</h3>
@@ -22,7 +22,7 @@
 			<th>{{trip.end}}</th>
 			<th>{{trip.desc}}</th>
 		</tr>
-		{% for x in kindame %}
+		{% for x in trip %}
 		<tr>
 			<th>{{x.destination}}</th>
 			<th>{{x.start}}</th>
@@ -46,7 +46,7 @@
 		{% for x in notme %}
 		<tr>
 			<th>{{x.plan_maker.name}}</th>
-			<th><a href="/users/{{x.id}}">{{x.destination}}</a></th>
+			<th><a href="/travels/destination/{{x.id}}">{{x.destination}}</a></th>
 			<th>{{x.start}}</th>
 			<th>{{x.end}}</th>
 			<th><a href="/join/{{x.id}}">Join</a></th>
@@ -54,6 +54,6 @@
 		{% endfor %}
 	</table>
 	<br>
-	<a href="/books/add">Add Travel Plan</a>
+	<a href="/travels/add">Add Travel Plan</a>
 </body>
 </html>
